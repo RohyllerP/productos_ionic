@@ -1,0 +1,32 @@
+<ion-header [translucent]="true" class="headerTodo">
+  <ion-toolbar id="headerNav">
+    <div>
+      <ion-img id="logoCadif" src="assets/logo-cadif.svg"></ion-img>
+    </div>
+    <div slot="end">
+      <ion-button id="open-action-sheet-2">
+        <ion-icon name="add-circle" slot="end"></ion-icon>
+        <ion-action-sheet trigger="open-action-sheet-2" [buttons]="actionSheet"></ion-action-sheet>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="content">
+  <div>
+    <h3>{{ auxPregunta.enunciado }}</h3>
+    <ion-radio-group>
+      <div *ngFor="let opcion of auxPregunta.opciones" (ionChange)="seleccionarOpcion(opcion)">
+        <ion-radio value="{{ opcion }}" slot="start" label-placement="end">
+          <ion-label>{{ opcion }}</ion-label>
+        </ion-radio>
+      </div>
+    </ion-radio-group>
+    <ion-button (click)="retroceder()" [disabled]="aux === 0">Atrás</ion-button>
+    <ion-button (click)="avanzar()" *ngIf="aux !== canti" color="warning">Siguiente</ion-button>
+    <ion-button (click)="finalizar()" color="success" *ngIf="aux === canti">Finalizar</ion-button>
+    <ion-alert [buttons]="alertButtons" [isOpen]="alertOpen" header="Alert" message="Desafio terminado"
+      (ionClose)="alertOpen = false">
+    </ion-alert>
+  </div>
+</ion-content>

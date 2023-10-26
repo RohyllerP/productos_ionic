@@ -1,0 +1,39 @@
+.headerTodo {
+    ion-toolbar {
+        --background: #4472C4;
+        padding: 0px 30px;
+    }
+
+    ion-button {
+        --background: transparent;
+        --box-shadow: 0px;
+        margin-top: -27px;
+    }
+
+    ion-icon {
+        font-size: 30px;
+        color: white;
+    }
+}
+
+#presentAlert {
+    padding-right: 14px;
+}
+
+#logoCadif {
+    width: 130px;
+    height: 130px;
+}
+
+#headerNav {
+    display: flex;
+    flex-direction: row;
+    background-color: #4472C4;
+}
+#content > div{
+    margin-left: 20px;
+    margin-top: 35px;
+    ion-radio-group > div{
+        padding: 20px 0px;
+    }
+}

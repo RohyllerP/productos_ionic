@@ -1,20 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header [translucent]="true" class="headerTodo">
+  <ion-toolbar id="headerNav" (click)="presentAlert($event,'alerta desde toolbar')">
+    <div>
+      <ion-img id="logoCadif" src="assets/logo-cadif.svg"></ion-img>
+    </div>
+    <div slot="end">
+      <ion-button id="open-action-sheet" (click)="preAlert($event)">
+        <ion-icon name="add-circle"></ion-icon>
+        <ion-action-sheet trigger="open-action-sheet" [buttons]="actionSheetButtons"></ion-action-sheet>
+      </ion-button>
+
+      <ion-button id="presentAlert">
+        <ion-icon name="newspaper"></ion-icon>
+      </ion-button>
+
+      <ion-icon class="modi" name="person-circle-sharp"></ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div>
+      <ion-card *ngFor="let item of productos">
+        <img alt="Silhouette of mountains" [src]="item.img" />
+        <ion-card-content>
+          <div>
+            <ion-chip color="light" (click)="presentAlert($event,'titulo alert')">
+              <ion-avatar>
+                <ion-icon name="logo-youtube"></ion-icon>
+              </ion-avatar>
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-chip>
+          </div>
+
+          <div>
+            <ion-chip color="light" (click)="presentToast('Nombre alerta')">
+              <ion-avatar>
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>{{ item.name }}</ion-label> 
+            </ion-chip>
+          </div>
+
+          <div>
+            <ion-chip color="light">
+              <ion-avatar>
+                <ion-icon name="reader-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>{{ item.topic }}</ion-label>
+            </ion-chip>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-segment [scrollable]="true" value="heart">
+      <ion-segment-button value="material" (click)="presentToast('Material')">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <ion-label>Material</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="videos" (click)="presentToast('Videos')">
+        <ion-icon name="film-outline"></ion-icon>
+        <ion-label>Videos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="desafios" (click)="presentToast('Desafios')">
+        <ion-icon name="easel-outline"></ion-icon>
+        <ion-label>Desafios</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </div>
 </ion-content>

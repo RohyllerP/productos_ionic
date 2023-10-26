@@ -1,27 +1,121 @@
-#container {
-  text-align: center;
+.headerTodo {
+  ion-toolbar {
+    --background: #4472C4;
+    padding: 0px 30px;
+  }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  ion-button {
+    --background: transparent;
+    --box-shadow: 0px;
+    margin-top: -27px;
+  }
+
+  ion-icon {
+    font-size: 30px;
+    color: white;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+#presentAlert {
+  padding-right: 14px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#logoCadif {
+  width: 130px;
+  height: 130px;
 }
 
-#container a {
-  text-decoration: none;
+#headerNav {
+  display: flex;
+  flex-direction: row;
+  background-color: #4472C4;
+}
+
+
+// main
+ion-content {
+  #container{
+    margin: 0px 40px;
+    margin-top: 20px;
+    > div{
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    ion-segment{
+      padding-top: 20px;
+    }
+  }
+  ion-card {
+    width: 250px;
+    img {
+      width: 100%;
+      height: 130px;
+    }
+
+    ion-chip {
+      color: black;
+
+      ion-icon {
+        font-size: 25px;
+      }
+
+      ion-label {
+        padding-top: 3px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 680px) {
+  ion-content {
+    #container > div{
+      justify-content: center;
+    }
+    ion-card {
+      width: 100%;
+      img {
+        height: 170px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 570px) {
+  .headerTodo {
+    ion-icon {
+      font-size: 25px;
+    }
+
+    div[slot] {
+      padding-top: 10px;
+    }
+  }
+
+  .modi {
+    position: relative;
+    top: -4px;
+  }
+
+  #logoCadif {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #logoCadif {
+    width: 65px;
+    height: 65px;
+  }
+
+  .headerTodo {
+    ion-icon {
+      font-size: 19px;
+    }
+  }
+
+  .modi {
+    position: relative;
+    top: -7px;
+  }
 }
